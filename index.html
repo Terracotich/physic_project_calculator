@@ -1,0 +1,286 @@
+
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculator</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+        <h5 class="my-0 mr-md-auto font-weight-normal">Калькулятор формул</h5>
+        <nav class="my-2 my-md-0 mr-md-3">
+            <a class="p-2 text-dark" href="https://terracotich.github.io/physic_project_calculator/">Калькулятор</a>
+            <a class="p-2 text-dark" href="https://terracotich.github.io/physic_project_calculator/termins">Термины</a>
+        </nav>
+    </div>
+    <div>
+        <h1>Темы: электричество и магнетизм</h1>
+    </div>
+<script>
+        function calculateCoulombLaw() {
+            const k = 8.99 * Math.pow(10, 9); // Постоянная Кулона (кН*м^2/Кл^2)
+            const q_CoulombLaw1 = parseFloat(document.getElementById("q_CoulombLaw1").value); // Заряд 1 в Кулонах (Кл)
+            const q_CoulombLaw2 = parseFloat(document.getElementById("q_CoulombLaw2").value); // Заряд 2 в Кулонах (Кл)
+            const r_CoulombLaw = parseFloat(document.getElementById("r_CoulombLaw").value); // Расстояние между зарядами в метрах (м)
+
+            if (!isNaN(q_CoulombLaw1) && !isNaN(q_CoulombLaw2) && !isNaN(r_CoulombLaw)) {
+                const force = k * (q_CoulombLaw1 * q_CoulombLaw2) / (r_CoulombLaw * r_CoulombLaw); // Расчет силы в Ньютонах (Н)
+                document.getElementById("result_CoulombLaw").textContent = `Сила взаимодействия: ${force} Н`;
+            } else {
+                document.getElementById("result_CoulombLaw").textContent = "Пожалуйста, введите корректные значения.";
+            }
+        }
+        function calculateElectricField() {
+            const q_ElectricField = parseFloat(document.getElementById("q_ElectricField").value); // Заряд (Кл)
+            const F_ElectricField = parseFloat(document.getElementById("F_ElectricField").value); // Cила (м)
+
+            if (!isNaN(q_ElectricField) && !isNaN(F_ElectricField)) {
+                const electricField = F_ElectricField / q_ElectricField; // Расчет напряженности электрического поля (Н/Кл)
+                document.getElementById("result_ElectricField").textContent = `Напряженность электрического поля: ${electricField} Н/Кл`;
+            } else {
+                document.getElementById("result_ElectricField").textContent = "Пожалуйста, введите корректные значения.";
+            }
+        }
+        function calculateElectricPotential() {
+            const E_ElectricPotential = parseFloat(document.getElementById("E_ElectricPotential").value); // Потенц энергия заряж тела (Дж)
+            const q_ElectricPotential = parseFloat(document.getElementById("q_ElectricPotential").value); // Величина заряда (Кл)
+
+            if (!isNaN(E_ElectricPotential) && !isNaN(q_ElectricPotential)) {
+                const electricPotential = E_ElectricPotential / q_ElectricPotential; // Расчет потенциала (В)
+                document.getElementById("result_ElectricPotential").textContent = `Потенциал электростатического поля: ${electricPotential} В`;
+            } else {
+                document.getElementById("result_ElectricPotential").textContent = "Пожалуйста, введите корректные значения.";
+            }
+        }
+        function calculateWork() {
+            const Q_Work = parseFloat(document.getElementById("q_Work").value); // Заряд (Кл)
+            const E_Work = parseFloat(document.getElementById("e_Work").value); // Напряженность э.поля (Н/Кл)
+            const deltaX_Work = parseFloat(document.getElementById("deltaX_Work").value); // Перемещение (м)
+
+            if (!isNaN(Q_Work) && !isNaN(E_Work) && !isNaN(deltaX_Work)) {
+                const work = Q_Work * E_Work * deltaX_Work; // Расчет работы (Дж)
+                document.getElementById("result_Work").textContent = `Работа электрических сил: ${work} Дж`;
+            } else {
+                document.getElementById("result_Work").textContent = "Пожалуйста, введите корректные значения.";
+            }
+        }
+        function calculateElectrical_capacity() {
+            const Q_Electrical_capacity = parseFloat(document.getElementById("q_Electrical_capacity").value); // Заряд (Кл)
+            const F_Electrical_capacity = parseFloat(document.getElementById("f_Electrical_capacity").value); // Элект. потенциал (В)
+
+            if (!isNaN(Q_Electrical_capacity) && !isNaN(F_Electrical_capacity)) {
+                const Electrical_capacity = Q_Electrical_capacity / F_Electrical_capacity; // электроемкость (Ф)
+                document.getElementById("result_Electrical_capacity").textContent = `Электроемкость проводника: ${Electrical_capacity} Ф`;
+            } else {
+                document.getElementById("result_Electrical_capacity").textContent = "Пожалуйста, введите корректные значения.";
+            }
+        }
+        function calculateElectrical_capacity_2() {
+            const Q_Electrical_capacity_2 = parseFloat(document.getElementById("q_Electrical_capacity_2").value); // Заряд (Кл)
+            const U_Electrical_capacity = parseFloat(document.getElementById("u_Electrical_capacity").value); // напряжение (В)
+
+            if (!isNaN(Q_Electrical_capacity_2) && !isNaN(U_Electrical_capacity)) {
+                const Electrical_capacity_2 = Q_Electrical_capacity_2 / U_Electrical_capacity; // электроемкость (Ф)
+                document.getElementById("result_Electrical_capacity_2").textContent = `Электроемкость проводника: ${Electrical_capacity_2} Ф`;
+            } else {
+                document.getElementById("result_Electrical_capacity_2").textContent = "Пожалуйста, введите корректные значения.";
+            }
+        }
+        function calculateOhmsLaw_full() {
+            const E_Electrical_power_ampers = parseFloat(document.getElementById("E_Electrical_power_ampers").value);
+            const R_Electrical_resistance_big = parseFloat(document.getElementById("R_Electrical_resistance_big").value);
+            const R_Electrical_resistance_small = parseFloat(document.getElementById("R_Electrical_resistance_small").value);
+
+            if (!isNaN(E_Electrical_power_ampers) && !isNaN(R_Electrical_resistance_big) && !isNaN(R_Electrical_resistance_small)) {
+                const OhmsLaw_full = E_Electrical_power_ampers / (R_Electrical_resistance_big + R_Electrical_resistance_small);
+                document.getElementById("result_OhmsLaw_full").textContent = `Закон Ома: ${OhmsLaw_full} А`;
+            } else {
+                document.getElementById("result_OhmsLaw_full").textContent = "Пожалуйста, введите корректные значения.";
+            }
+        }
+        function calculateVectormagneticinduction() {
+            const M_Vectormagneticinduction = parseFloat(document.getElementById("M_Vectormagneticinduction").value);
+            const P_Vectormagneticinduction = parseFloat(document.getElementById("P_Vectormagneticinduction").value);
+
+            if (!isNaN(M_Vectormagneticinduction) && !isNaN(P_Vectormagneticinduction)) {
+                const Vectormagneticinduction = M_Vectormagneticinduction / P_Vectormagneticinduction;
+                document.getElementById("result_Vectormagneticinduction").textContent = `Вектор магнитной индукции: ${Vectormagneticinduction} Тл`;
+            } else {
+                document.getElementById("result_Vectormagneticinduction").textContent = "Пожалуйста, введите корректные значения.";
+            }
+        }
+        function calculateAmphersPower() {
+            const B_AmphersPower = parseFloat(document.getElementById("B_AmphersPower").value);
+            const I_AmphersPower = parseFloat(document.getElementById("I_AmphersPower").value);
+            const L_AmphersPower = parseFloat(document.getElementById("L_AmphersPower").value);
+            const sina_AmphersPower = parseFloat(document.getElementById("sina_AmphersPower").value);
+
+            if (!isNaN(B_AmphersPower) && !isNaN(I_AmphersPower) && !isNaN(L_AmphersPower) && !isNaN(sina_AmphersPower)) {
+                const AmphersPower = B_AmphersPower * I_AmphersPower * L_AmphersPower * sina_AmphersPower;
+                document.getElementById("result_AmphersPower").textContent = `Сила Ампера: ${AmphersPower} Н`;
+            } else {
+                document.getElementById("result_AmphersPower").textContent = "Пожалуйста, введите корректные значения.";
+            }
+        }
+        function calculateLorentsPower() {
+            const B_LorentsPower = parseFloat(document.getElementById("B_LorentsPower").value);
+            const q_LorentsPower = parseFloat(document.getElementById("q_LorentsPower").value);
+            const U_LorentsPower = parseFloat(document.getElementById("U_LorentsPower").value);
+            const sina_LorentsPower = parseFloat(document.getElementById("sina_LorentsPower").value);
+
+            if (!isNaN(B_LorentsPower) && !isNaN(q_LorentsPower) && !isNaN(U_LorentsPower) && !isNaN(sina_LorentsPower)) {
+                const LorentsPower = B_LorentsPower * q_LorentsPower * U_LorentsPower * sina_LorentsPower;
+                document.getElementById("result_LorentsPower").textContent = `Сила Лоренца: ${LorentsPower} Н`;
+            } else {
+                document.getElementById("result_LorentsPower").textContent = "Пожалуйста, введите корректные значения.";
+            }
+        }
+    </script>
+    <h1>Закон Кулона</h1>
+    <form>
+        <label for="q_CoulombLaw1">Заряд 1 (Кл):</label>
+        <input type="number" id="q_CoulombLaw1"><br>
+
+        <label for="q_CoulombLaw2">Заряд 2 (Кл):</label>
+        <input type="number" id="q_CoulombLaw2"><br>
+
+        <label for="r_CoulombLaw">Расстояние (м):</label>
+        <input type="number" id="r_CoulombLaw"><br>
+
+        <button type="button" onclick="calculateCoulombLaw()">Рассчитать</button>
+    </form>
+    <div id="result_CoulombLaw"></div>
+
+    <h1>Напряженность электрического поля</h1>
+        <form>
+        <label for="q_ElectricField">Заряд (Кл):</label>
+        <input type="number" id="q_ElectricField"><br>
+
+        <label for="F_ElectricField">Сила (Н):</label>
+        <input type="number" id="F_ElectricField"><br>
+
+        <button type="button" onclick="calculateElectricField()">Рассчитать</button>
+    </form>
+    <div id="result_ElectricField"></div>
+
+    <h1>Потенциал электростатического поля точечного заряда</h1>
+    <form>
+        <label for="q_ElectricPotential">Величина заряда (Кл):</label>
+        <input type="number" id="q_ElectricPotential"><br>
+
+        <label for="E_ElectricPotential">Потенциальная энергия заряженного тела (Дж):</label>
+        <input type="number" id="E_ElectricPotential"><br>
+
+        <button type="button" onclick="calculateElectricPotential()">Рассчитать</button>
+    </form>
+    <div id="result_ElectricPotential"></div>
+
+    <h1>Работа электрических сил</h1>
+    <form>
+        <label for="q_Work">Заряд (Кл):</label>
+        <input type="number" id="q_Work"><br>
+
+        <label for="e_Work">Напряженность электро-поля (Н/Кл):</label>
+        <input type="number" id="e_Work"><br>
+
+        <label for="deltaX_Work">Перемещение (м):</label>
+        <input type="number" id="deltaX_Work"><br>
+
+        <button type="button" onclick="calculateWork()">Рассчитать</button>
+    </form>
+    <div id="result_Work"></div>
+
+    <h1>Электроемкость проводника (проводник в изоляции) </h1>
+    <form>
+        <label for="q_Electrical_capacity">Заряд (Кл):</label>
+        <input type="number" id="q_Electrical_capacity"><br>
+
+        <label for="f_Electrical_capacity">Электрический потенциал (В):</label>
+        <input type="number" id="f_Electrical_capacity"><br>
+
+        <button type="button" onclick="calculateElectrical_capacity()">Рассчитать</button>
+    </form>
+    <div id="result_Electrical_capacity"></div>
+
+    <h1>Электроемкость проводника (окружен другими проводниками) </h1>
+    <form>
+        <label for="q_Electrical_capacity_2">Заряд (Кл):</label>
+        <input type="number" id="q_Electrical_capacity_2"><br>
+
+        <label for="u_Electrical_capacity">Электрическое напряжение (В):</label>
+        <input type="number" id="u_Electrical_capacity"><br>
+
+        <button type="button" onclick="calculateElectrical_capacity_2()">Рассчитать</button>
+    </form>
+    <div id="result_Electrical_capacity_2"></div>
+
+    <h1>Закон Ома для полной электрической цепи </h1>
+    <form>
+        <label for="E_Electrical_power_ampers">Электродвижущая сила (В):</label>
+        <input type="number" id="E_Electrical_power_ampers"><br>
+
+        <label for="R_Electrical_resistance_big">Внешнее сопротивление источника тока (Ом):</label>
+        <input type="number" id="R_Electrical_resistance_big"><br>
+
+        <label for="R_Electrical_resistance_small">Внутреннее сопротивление источника тока (Ом):</label>
+        <input type="number" id="R_Electrical_resistance_small"><br>
+
+        <button type="button" onclick="calculateOhmsLaw_full()">Рассчитать</button>
+    </form>
+    <div id="result_OhmsLaw_full"></div>
+
+    <h1>Вектор магнитной индукции </h1>
+    <form>
+        <label for="M_Vectormagneticinduction">Максимальный вращающий момент:</label>
+        <input type="number" id="M_Vectormagneticinduction"><br>
+
+        <label for="P_Vectormagneticinduction">Собственный магнитный момент:</label>
+        <input type="number" id="P_Vectormagneticinduction"><br>
+
+        <button type="button" onclick="calculateVectormagneticinduction()">Рассчитать</button>
+    </form>
+    <div id="result_Vectormagneticinduction"></div>
+
+    <h1>Сила Ампера </h1>
+    <form>
+        <label for="B_AmphersPower">Вектор магнитной индукции (Тл):</label>
+        <input type="number" id="B_AmphersPower"><br>
+
+        <label for="I_AmphersPower">Сила тока (А):</label>
+        <input type="number" id="I_AmphersPower"><br>
+
+        <label for="L_AmphersPower">Длина проводника (м):</label>
+        <input type="number" id="L_AmphersPower"><br>
+
+        <label for="sina_AmphersPower">Угол между проводником и линиями магнитной индукции:</label>
+        <input type="number" id="sina_AmphersPower"><br>
+
+        <button type="button" onclick="calculateAmphersPower()">Рассчитать</button>
+    </form>
+    <div id="result_AmphersPower"></div>
+
+    <h1>Сила Лоренца </h1>
+    <form>
+        <label for="B_LorentsPower">Вектор магнитной индукции (Тл):</label>
+        <input type="number" id="B_LorentsPower"><br>
+
+        <label for="q_LorentsPower">Заряд частицы (Кл):</label>
+        <input type="number" id="q_LorentsPower"><br>
+
+        <label for="U_LorentsPower">Скорость частицы (м/c):</label>
+        <input type="number" id="U_LorentsPower"><br>
+
+        <label for="sina_LorentsPower">Угол между проводником и линиями магнитной индукции:</label>
+        <input type="number" id="sina_LorentsPower"><br>
+
+        <button type="button" onclick="calculateLorentsPower()">Рассчитать</button>
+    </form>
+    <div id="result_LorentsPower"></div>
+
+</body>
+</html>
